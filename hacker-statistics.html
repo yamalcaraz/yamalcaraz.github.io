@@ -1,0 +1,821 @@
+<!DOCTYPE html>
+<html lang="en" prefix="og: http://ogp.me/ns# fb: https://www.facebook.com/2008/fbml">
+<head>
+    <title>Hacker Statistics - Yam's attempt at blogging</title>
+    <!-- Using the latest rendering mode for IE -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+
+
+<style type="text/css">
+
+/*some stuff for output/input prompts*/
+div.cell{border:1px solid transparent;display:-webkit-box;-webkit-box-orient:vertical;-webkit-box-align:stretch;display:-moz-box;-moz-box-orient:vertical;-moz-box-align:stretch;display:box;box-orient:vertical;box-align:stretch;display:flex;flex-direction:column;align-items:stretch}div.cell.selected{border-radius:4px;border:thin #ababab solid}
+div.cell.edit_mode{border-radius:4px;border:thin #008000 solid}
+div.cell{width:100%;padding:5px 5px 5px 0;margin:0;outline:none}
+div.prompt{min-width:11ex;padding:.4em;margin:0;font-family:monospace;text-align:right;line-height:1.21429em}
+@media (max-width:480px){div.prompt{text-align:left}}div.inner_cell{display:-webkit-box;-webkit-box-orient:vertical;-webkit-box-align:stretch;display:-moz-box;-moz-box-orient:vertical;-moz-box-align:stretch;display:box;box-orient:vertical;box-align:stretch;display:flex;flex-direction:column;align-items:stretch;-webkit-box-flex:1;-moz-box-flex:1;box-flex:1;flex:1}
+div.input_area{border:1px solid #cfcfcf;border-radius:4px;background:#f7f7f7;line-height:1.21429em}
+div.prompt:empty{padding-top:0;padding-bottom:0}
+div.input{page-break-inside:avoid;display:-webkit-box;-webkit-box-orient:horizontal;-webkit-box-align:stretch;display:-moz-box;-moz-box-orient:horizontal;-moz-box-align:stretch;display:box;box-orient:horizontal;box-align:stretch;}
+div.inner_cell{width:90%;}
+div.input_area{border:1px solid #cfcfcf;border-radius:4px;background:#f7f7f7;}
+div.input_prompt{color:navy;border-top:1px solid transparent;}
+div.output_wrapper{margin-top:5px;position:relative;display:-webkit-box;-webkit-box-orient:vertical;-webkit-box-align:stretch;display:-moz-box;-moz-box-orient:vertical;-moz-box-align:stretch;display:box;box-orient:vertical;box-align:stretch;width:100%;}
+div.output_scroll{height:24em;width:100%;overflow:auto;border-radius:4px;-webkit-box-shadow:inset 0 2px 8px rgba(0, 0, 0, 0.8);-moz-box-shadow:inset 0 2px 8px rgba(0, 0, 0, 0.8);box-shadow:inset 0 2px 8px rgba(0, 0, 0, 0.8);}
+div.output_collapsed{margin:0px;padding:0px;display:-webkit-box;-webkit-box-orient:vertical;-webkit-box-align:stretch;display:-moz-box;-moz-box-orient:vertical;-moz-box-align:stretch;display:box;box-orient:vertical;box-align:stretch;width:100%;}
+div.out_prompt_overlay{height:100%;padding:0px 0.4em;position:absolute;border-radius:4px;}
+div.out_prompt_overlay:hover{-webkit-box-shadow:inset 0 0 1px #000000;-moz-box-shadow:inset 0 0 1px #000000;box-shadow:inset 0 0 1px #000000;background:rgba(240, 240, 240, 0.5);}
+div.output_prompt{color:darkred;}
+
+a.anchor-link:link{text-decoration:none;padding:0px 20px;visibility:hidden;}
+h1:hover .anchor-link,h2:hover .anchor-link,h3:hover .anchor-link,h4:hover .anchor-link,h5:hover .anchor-link,h6:hover .anchor-link{visibility:visible;}
+/* end stuff for output/input prompts*/
+
+
+.highlight-ipynb .hll { background-color: #ffffcc }
+.highlight-ipynb  { background: #f8f8f8; }
+.highlight-ipynb .c { color: #408080; font-style: italic } /* Comment */
+.highlight-ipynb .err { border: 1px solid #FF0000 } /* Error */
+.highlight-ipynb .k { color: #008000; font-weight: bold } /* Keyword */
+.highlight-ipynb .o { color: #666666 } /* Operator */
+.highlight-ipynb .cm { color: #408080; font-style: italic } /* Comment.Multiline */
+.highlight-ipynb .cp { color: #BC7A00 } /* Comment.Preproc */
+.highlight-ipynb .c1 { color: #408080; font-style: italic } /* Comment.Single */
+.highlight-ipynb .cs { color: #408080; font-style: italic } /* Comment.Special */
+.highlight-ipynb .gd { color: #A00000 } /* Generic.Deleted */
+.highlight-ipynb .ge { font-style: italic } /* Generic.Emph */
+.highlight-ipynb .gr { color: #FF0000 } /* Generic.Error */
+.highlight-ipynb .gh { color: #000080; font-weight: bold } /* Generic.Heading */
+.highlight-ipynb .gi { color: #00A000 } /* Generic.Inserted */
+.highlight-ipynb .go { color: #888888 } /* Generic.Output */
+.highlight-ipynb .gp { color: #000080; font-weight: bold } /* Generic.Prompt */
+.highlight-ipynb .gs { font-weight: bold } /* Generic.Strong */
+.highlight-ipynb .gu { color: #800080; font-weight: bold } /* Generic.Subheading */
+.highlight-ipynb .gt { color: #0044DD } /* Generic.Traceback */
+.highlight-ipynb .kc { color: #008000; font-weight: bold } /* Keyword.Constant */
+.highlight-ipynb .kd { color: #008000; font-weight: bold } /* Keyword.Declaration */
+.highlight-ipynb .kn { color: #008000; font-weight: bold } /* Keyword.Namespace */
+.highlight-ipynb .kp { color: #008000 } /* Keyword.Pseudo */
+.highlight-ipynb .kr { color: #008000; font-weight: bold } /* Keyword.Reserved */
+.highlight-ipynb .kt { color: #B00040 } /* Keyword.Type */
+.highlight-ipynb .m { color: #666666 } /* Literal.Number */
+.highlight-ipynb .s { color: #BA2121 } /* Literal.String */
+.highlight-ipynb .na { color: #7D9029 } /* Name.Attribute */
+.highlight-ipynb .nb { color: #008000 } /* Name.Builtin */
+.highlight-ipynb .nc { color: #0000FF; font-weight: bold } /* Name.Class */
+.highlight-ipynb .no { color: #880000 } /* Name.Constant */
+.highlight-ipynb .nd { color: #AA22FF } /* Name.Decorator */
+.highlight-ipynb .ni { color: #999999; font-weight: bold } /* Name.Entity */
+.highlight-ipynb .ne { color: #D2413A; font-weight: bold } /* Name.Exception */
+.highlight-ipynb .nf { color: #0000FF } /* Name.Function */
+.highlight-ipynb .nl { color: #A0A000 } /* Name.Label */
+.highlight-ipynb .nn { color: #0000FF; font-weight: bold } /* Name.Namespace */
+.highlight-ipynb .nt { color: #008000; font-weight: bold } /* Name.Tag */
+.highlight-ipynb .nv { color: #19177C } /* Name.Variable */
+.highlight-ipynb .ow { color: #AA22FF; font-weight: bold } /* Operator.Word */
+.highlight-ipynb .w { color: #bbbbbb } /* Text.Whitespace */
+.highlight-ipynb .mf { color: #666666 } /* Literal.Number.Float */
+.highlight-ipynb .mh { color: #666666 } /* Literal.Number.Hex */
+.highlight-ipynb .mi { color: #666666 } /* Literal.Number.Integer */
+.highlight-ipynb .mo { color: #666666 } /* Literal.Number.Oct */
+.highlight-ipynb .sb { color: #BA2121 } /* Literal.String.Backtick */
+.highlight-ipynb .sc { color: #BA2121 } /* Literal.String.Char */
+.highlight-ipynb .sd { color: #BA2121; font-style: italic } /* Literal.String.Doc */
+.highlight-ipynb .s2 { color: #BA2121 } /* Literal.String.Double */
+.highlight-ipynb .se { color: #BB6622; font-weight: bold } /* Literal.String.Escape */
+.highlight-ipynb .sh { color: #BA2121 } /* Literal.String.Heredoc */
+.highlight-ipynb .si { color: #BB6688; font-weight: bold } /* Literal.String.Interpol */
+.highlight-ipynb .sx { color: #008000 } /* Literal.String.Other */
+.highlight-ipynb .sr { color: #BB6688 } /* Literal.String.Regex */
+.highlight-ipynb .s1 { color: #BA2121 } /* Literal.String.Single */
+.highlight-ipynb .ss { color: #19177C } /* Literal.String.Symbol */
+.highlight-ipynb .bp { color: #008000 } /* Name.Builtin.Pseudo */
+.highlight-ipynb .vc { color: #19177C } /* Name.Variable.Class */
+.highlight-ipynb .vg { color: #19177C } /* Name.Variable.Global */
+.highlight-ipynb .vi { color: #19177C } /* Name.Variable.Instance */
+.highlight-ipynb .il { color: #666666 } /* Literal.Number.Integer.Long */
+</style>
+
+<style type="text/css">
+/* Overrides of notebook CSS for static HTML export */
+div.entry-content {
+  overflow: visible;
+  padding: 8px;
+}
+.input_area {
+  padding: 0.2em;
+}
+
+a.heading-anchor {
+ white-space: normal;
+}
+
+.rendered_html
+code {
+ font-size: .8em;
+}
+
+pre.ipynb {
+  color: black;
+  background: #f7f7f7;
+  border: none;
+  box-shadow: none;
+  margin-bottom: 0;
+  padding: 0;
+  margin: 0px;
+  font-size: 13px;
+}
+
+/* remove the prompt div from text cells */
+div.text_cell .prompt {
+    display: none;
+}
+
+/* remove horizontal padding from text cells, */
+/* so it aligns with outer body text */
+div.text_cell_render {
+    padding: 0.5em 0em;
+}
+
+img.anim_icon{padding:0; border:0; vertical-align:middle; -webkit-box-shadow:none; -box-shadow:none}
+
+div.collapseheader {
+    width=100%;
+    padding: 2px;
+    cursor: pointer;
+    font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;
+}
+
+</style>
+
+<script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML" type="text/javascript"></script>
+<script type="text/javascript">
+init_mathjax = function() {
+    if (window.MathJax) {
+        // MathJax loaded
+        MathJax.Hub.Config({
+            tex2jax: {
+                inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+                displayMath: [ ['$$','$$'], ["\\[","\\]"] ]
+            },
+            displayAlign: 'left', // Change this to 'center' to center equations.
+            "HTML-CSS": {
+                styles: {'.MathJax_Display': {"margin": 0}}
+            }
+        });
+        MathJax.Hub.Queue(["Typeset",MathJax.Hub]);
+    }
+}
+init_mathjax();
+</script>
+
+<link rel="canonical" href="https://yamalcaraz.github.io/hacker-statistics.html">
+
+        <meta name="author" content="Joselito "Yam" Alcaraz II" />
+        <meta name="keywords" content="python,statistics" />
+        <meta name="description" content="How and what I learned about hacker statistics." />
+
+        <meta property="og:site_name" content="Yam's attempt at blogging" />
+        <meta property="og:type" content="article"/>
+        <meta property="og:title" content="Hacker Statistics"/>
+        <meta property="og:url" content="https://yamalcaraz.github.io/hacker-statistics.html"/>
+        <meta property="og:description" content="How and what I learned about hacker statistics."/>
+        <meta property="article:published_time" content="2018-03-13" />
+            <meta property="article:section" content="Blog" />
+            <meta property="article:tag" content="python" />
+            <meta property="article:tag" content="statistics" />
+            <meta property="article:author" content="Joselito "Yam" Alcaraz II" />
+
+
+
+    <!-- Bootstrap -->
+        <link rel="stylesheet" href="https://yamalcaraz.github.io/theme/css/bootstrap.sandstone.min.css" type="text/css"/>
+    <link href="https://yamalcaraz.github.io/theme/css/font-awesome.min.css" rel="stylesheet">
+
+    <link href="https://yamalcaraz.github.io/theme/css/pygments/native.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://yamalcaraz.github.io/theme/css/style.css" type="text/css"/>
+        <link href="https://yamalcaraz.github.io/static/custom.css" rel="stylesheet">
+
+        <link href="https://yamalcaraz.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate"
+              title="Yam's attempt at blogging ATOM Feed"/>
+
+
+
+        <link href="https://yamalcaraz.github.io/feeds/blog.atom.xml" type="application/atom+xml" rel="alternate"
+              title="Yam's attempt at blogging Blog ATOM Feed"/>
+
+</head>
+<body>
+
+<div class="navbar navbar-default navbar-fixed-top" role="navigation">
+	<div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a href="https://yamalcaraz.github.io/" class="navbar-brand">
+Yam's attempt at blogging            </a>
+        </div>
+        <div class="collapse navbar-collapse navbar-ex1-collapse">
+            <ul class="nav navbar-nav">
+                         <li><a href="https://yamalcaraz.github.io/pages/about-me.html">
+                             About Me
+                          </a></li>
+                        <li class="active">
+                            <a href="https://yamalcaraz.github.io/category/blog.html">Blog</a>
+                        </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+</div> <!-- /.navbar -->
+<!-- Banner -->
+<!-- End Banner -->
+<div class="container">
+    <div class="row">
+        <div class="col-sm-9">
+    <section id="content">
+        <article>
+            <header class="page-header">
+                <h1>
+                    <a href="https://yamalcaraz.github.io/hacker-statistics.html"
+                       rel="bookmark"
+                       title="Permalink to Hacker Statistics">
+                        Hacker Statistics
+                    </a>
+                </h1>
+            </header>
+            <div class="entry-content">
+                <div class="panel">
+                    <div class="panel-body">
+<footer class="post-info">
+    <span class="label label-default">Date</span>
+    <span class="published">
+        <i class="fa fa-calendar"></i><time datetime="2018-03-13T01:00:00+08:00"> Tue 13 March 2018</time>
+    </span>
+
+
+
+
+
+<span class="label label-default">Tags</span>
+	<a href="https://yamalcaraz.github.io/tag/python.html">python</a>
+        /
+	<a href="https://yamalcaraz.github.io/tag/statistics.html">statistics</a>
+    
+</footer><!-- /.post-info -->                    </div>
+                </div>
+                <p>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>While studying machine learning, I encountered the term "hacker statistics" in different sources, such as from <em>"Statistical thinking in Python"</em> classes of <em>DataCamp</em>, and a presentation at PyCon by Jake Vanderplas. It was really a mind opener for me. I had very few statistics background from my university degree, so the results I find in online when searching about (ANOVA), etc. are not that intuitive.</p>
+<p>This post is just to solidify my understanding of the concept and to share what I learned, hoping that this helps some people having trouble with understanding intuition for some statistical concepts as well.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="The-coin-toss">The coin toss<a class="anchor-link" href="#The-coin-toss">&#182;</a></h1><p>Let's try tossing a coin using a python program. We can use the the <code>random</code> class of the <code>numpy</code> to generate our random numbers. Setting 1 as heads and 0 for tails for our coin toss.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[1]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">123</span><span class="p">)</span>
+<span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="n">size</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span> <span class="c1">#let us toss our 2-sided (duh) coin 10 times</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[1]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>array([0, 1, 0, 0, 0, 0, 0, 1, 1, 0])</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Cool, we have 3 heads and 7 tails.</p>
+<p>In the real world, we may encounter a situation where we might want ask the question, is this coin we are tossing a fair coin or not? Or is this dice fair or not? We can do simulation to answer this problem.</p>
+<h1 id="The-die-toss">The die toss<a class="anchor-link" href="#The-die-toss">&#182;</a></h1><p>In particular, the question may be: What is the probability that the fair dice will show the number "1" 6 times in 20 rolls?</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[2]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">roll_dice</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+    <span class="s2">&quot;Roll a dice n times, and return the dice side counts in a dictionary&quot;</span>
+    <span class="n">die_sides</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">7</span><span class="p">)</span>
+    <span class="n">a</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span><span class="n">size</span><span class="o">=</span><span class="n">n</span><span class="p">)</span><span class="o">+</span><span class="mi">1</span>
+    <span class="n">counts_dict</span> <span class="o">=</span> <span class="p">{</span><span class="n">die_sides</span><span class="p">[</span><span class="n">i</span><span class="p">]:</span><span class="nb">sum</span><span class="p">(</span><span class="n">a</span><span class="o">==</span><span class="n">die_sides</span><span class="p">[</span><span class="n">i</span><span class="p">])</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">die_sides</span><span class="p">))}</span>
+    <span class="k">return</span> <span class="n">counts_dict</span>
+
+<span class="c1">#lets roll a dice 20 times</span>
+<span class="n">counts</span><span class="o">=</span><span class="n">roll_dice</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">key</span><span class="p">,</span><span class="n">val</span> <span class="ow">in</span> <span class="n">counts</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Die side </span><span class="si">{}</span><span class="s1"> occurences: </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">key</span><span class="p">,</span><span class="n">val</span><span class="p">))</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Die side 1 occurences: 5
+Die side 2 occurences: 6
+Die side 3 occurences: 2
+Die side 4 occurences: 3
+Die side 5 occurences: 3
+Die side 6 occurences: 1
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Great, we are successful with simulating 20 dice rolls. To know the probability of rolling the side "1" six times, I can repeat this exercise again for say 10,000 times, and count the times that die side "1" is greater than or equal 5.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[6]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">is_greater_than_5</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10000</span><span class="p">):</span>
+    <span class="n">counts</span><span class="o">=</span><span class="n">roll_dice</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span>
+    <span class="n">is_greater_than_5</span> <span class="o">+=</span> <span class="n">counts</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">&gt;=</span><span class="mi">6</span>
+
+<span class="n">probability</span> <span class="o">=</span> <span class="n">is_greater_than_5</span><span class="o">/</span><span class="mi">10000</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;The probability of showing </span><span class="se">\&quot;</span><span class="s2">1</span><span class="se">\&quot;</span><span class="s2"> on the dice is </span><span class="si">{:.2%}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">probability</span><span class="p">))</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>The probability of showing &#34;1&#34; on the dice is 10.22%
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Ok, so we <em>accept</em> the <em>null hypothesis</em>, i.e. we don't have enough evidence to say that this is an unfair die.</p>
+<p>It turns out that this whole dice problem is actually a story that can be told using the binomial distribution, which says that "(The number of successes (<strong><em>r</em></strong>) in <strong><em>n</em></strong> Bernoulli trials with probability (<strong><em>p</em></strong>) of success, is <em>binomially distributed</em>". Which just says that we can show the probability distribution of dice rolling a particular side, e.g. "1", with a 1/6 chance or probability, <strong><em>p</em></strong>.</p>
+<p>This might still be vague, so lets draw a plot to make it clear.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[7]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">set_style</span><span class="p">()</span>
+
+<span class="c1">#we use the np.random.binomial to sample from binomial distribution</span>
+<span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">binomial</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span><span class="mf">1.</span><span class="o">/</span><span class="mi">6</span><span class="p">,</span><span class="n">size</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span> <span class="c1">#toss a 6-sided dice 20 times and count the </span>
+                                   <span class="c1">#times it shows a particular side, e.g. &quot;1&quot;, </span>
+                                   <span class="c1">#and repeat this exercise 5 times.</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[7]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>array([3, 3, 4, 1, 2])</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Notice that this is actually has the same function as the <code>roll_dice</code> function defined above, just without with the numpy optimizations of course.  We can sample with a bigger size and plot a histogram to show how the binomial distribution looks like.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[5]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%</span><span class="k">matplotlib</span> inline
+
+<span class="n">binomial_samples</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">binomial</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span><span class="mf">1.</span><span class="o">/</span><span class="mi">6</span><span class="p">,</span><span class="n">size</span><span class="o">=</span><span class="mi">10000</span><span class="p">)</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+
+<span class="n">bins</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="nb">max</span><span class="p">(</span><span class="n">binomial_samples</span><span class="p">))</span> <span class="o">-</span> <span class="mf">0.5</span>           <span class="c1"># set up the bin edges</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">binomial_samples</span><span class="p">,</span><span class="n">bins</span><span class="o">=</span><span class="n">bins</span><span class="p">,</span><span class="n">density</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span> <span class="c1"># generate histogram</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">margins</span><span class="p">(</span><span class="mf">0.02</span><span class="p">)</span>                                           <span class="c1"># set margins</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;number of times the &quot;1&quot; face shows up&#39;</span><span class="p">)</span>     <span class="c1"># label axes</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="mf">5.5</span><span class="p">,</span><span class="n">linewidth</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">{:.2%}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">probability</span><span class="p">),</span> 
+             <span class="n">xytext</span><span class="o">=</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span> <span class="mf">0.11</span><span class="p">),</span> 
+             <span class="n">xy</span><span class="o">=</span><span class="p">(</span><span class="mf">5.5</span><span class="p">,</span> <span class="mf">0.11</span><span class="p">),</span>
+             <span class="n">va</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span>
+             <span class="n">color</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span>
+             <span class="n">size</span><span class="o">=</span><span class="mi">11</span><span class="p">,</span>
+             <span class="n">arrowprops</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;arrowstyle&#39;</span><span class="p">:</span> <span class="s1">&#39;&lt;|-&#39;</span><span class="p">,</span> 
+                         <span class="s1">&#39;lw&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> 
+                         <span class="s1">&#39;color&#39;</span><span class="p">:</span> <span class="s1">&#39;k&#39;</span><span class="p">});</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+
+
+<div class="output_png output_subarea ">
+<img src="data:image/png;base64,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
+"
+>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Indeed, we see here that the area to the right of 6 inclusive, is roughly 10% of the area of the whole distribution.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Sources:</p>
+<p><a href="http://christopherroach.com/articles/statistics-for-hackers/">Christopher Roach's Blog</a></p>
+<p><a href="https://www.youtube.com/watch?v=Iq9DzN6mvYA&amp;feature=youtu.be]">Jake Vanderplas' talk</a></p>
+<p><a href="https://campus.datacamp.com/courses/statistical-thinking-in-python-part-1/">DataCamp</a></p>
+
+</div>
+</div>
+</div>
+ 
+
+</p>
+            </div>
+            <!-- /.entry-content -->
+    <hr/>
+    <section class="comments" id="comments">
+        <h2>Comments</h2>
+
+        <div id="disqus_thread"></div>
+        <script type="text/javascript">
+            /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+            var disqus_shortname = 'http-yamalcaraz-github-io'; // required: replace example with your forum shortname
+
+                    var disqus_identifier = 'hacker-statistics';
+                var disqus_url = 'https://yamalcaraz.github.io/hacker-statistics.html';
+
+            var disqus_config = function () {
+                this.language = "en";
+            };
+
+            /* * * DON'T EDIT BELOW THIS LINE * * */
+            (function () {
+                var dsq = document.createElement('script');
+                dsq.type = 'text/javascript';
+                dsq.async = true;
+                dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+                (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+            })();
+        </script>
+        <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by
+            Disqus.</a></noscript>
+        <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+    </section>
+        </article>
+    </section>
+
+        </div>
+        <div class="col-sm-3" id="sidebar">
+            <aside>
+<!-- Sidebar -->
+<section class="well well-sm">
+  <ul class="list-group list-group-flush">
+
+<!-- Sidebar/Social -->
+<li class="list-group-item">
+  <h4><i class="fa fa-home fa-lg"></i><span class="icon-label">Social</span></h4>
+  <ul class="list-group" id="social">
+    <li class="list-group-item"><a href="https://www.linkedin.com/in/jytalcaraz/"><i class="fa fa-linkedin-square fa-lg"></i> LinkedIn</a></li>
+    <li class="list-group-item"><a href="https://twitter.com/yam_alcaraz"><i class="fa fa-twitter-square fa-lg"></i> Twitter</a></li>
+  </ul>
+</li>
+<!-- End Sidebar/Social -->
+
+<!-- Sidebar/Tag Cloud -->
+<li class="list-group-item">
+  <a href="https://yamalcaraz.github.io/"><h4><i class="fa fa-tags fa-lg"></i><span class="icon-label">Tags</span></h4></a>
+  <ul class="list-group " id="tags">
+    <li class="list-group-item tag-1">
+      <a href="https://yamalcaraz.github.io/tag/python.html">python</a>
+    </li>
+    <li class="list-group-item tag-4">
+      <a href="https://yamalcaraz.github.io/tag/statistics.html">statistics</a>
+    </li>
+    <li class="list-group-item tag-4">
+      <a href="https://yamalcaraz.github.io/tag/machine-learning.html">machine learning</a>
+    </li>
+  </ul>
+</li>
+<!-- End Sidebar/Tag Cloud -->
+  </ul>
+</section>
+<!-- End Sidebar -->            </aside>
+        </div>
+    </div>
+</div>
+<footer>
+   <div class="container">
+      <hr>
+      <div class="row">
+         <div class="col-xs-10">&copy; 2018 Joselito "Yam" Alcaraz II
+            &middot; Powered by <a href="https://github.com/getpelican/pelican-themes/tree/master/pelican-bootstrap3" target="_blank">pelican-bootstrap3</a>,
+            <a href="http://docs.getpelican.com/" target="_blank">Pelican</a>,
+            <a href="http://getbootstrap.com" target="_blank">Bootstrap</a>         </div>
+         <div class="col-xs-2"><p class="pull-right"><i class="fa fa-arrow-up"></i> <a href="#">Back to top</a></p></div>
+      </div>
+   </div>
+</footer>
+<script src="https://yamalcaraz.github.io/theme/js/jquery.min.js"></script>
+
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="https://yamalcaraz.github.io/theme/js/bootstrap.min.js"></script>
+
+<!-- Enable responsive features in IE8 with Respond.js (https://github.com/scottjehl/Respond) -->
+<script src="https://yamalcaraz.github.io/theme/js/respond.min.js"></script>
+
+
+    <!-- Disqus -->
+    <script type="text/javascript">
+        /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+        var disqus_shortname = 'http-yamalcaraz-github-io'; // required: replace example with your forum shortname
+
+        /* * * DON'T EDIT BELOW THIS LINE * * */
+        (function () {
+            var s = document.createElement('script');
+            s.async = true;
+            s.type = 'text/javascript';
+            s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+            (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+        }());
+    </script>
+    <!-- End Disqus Code -->
+
+<script type="text/javascript">
+jQuery(document).ready(function($) {
+    $("div.collapseheader").click(function () {
+    $header = $(this).children("span").first();
+    $codearea = $(this).children(".input_area");
+    console.log($(this).children());
+    $codearea.slideToggle(500, function () {
+        $header.text(function () {
+            return $codearea.is(":visible") ? "Collapse Code" : "Expand Code";
+        });
+    });
+});
+});
+</script>
+</body>
+</html>
