@@ -4,7 +4,7 @@
 &lt;/div&gt;
 &lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;p&gt;While studying machine learning, I encountered the term "hacker statistics" in different sources, such as from &lt;em&gt;"Statistical thinking in Python"&lt;/em&gt; classes of &lt;em&gt;DataCamp&lt;/em&gt;, and a presentation at PyCon by Jake Vanderplas. It was really a mind opener for me. I had very few statistics background from my university degree, so the results I find in online when searching about (ANOVA), etc. are not that intuitive.&lt;/p&gt;
+&lt;p&gt;While studying machine learning, I encountered the term "hacker statistics" in different sources, such as from &lt;em&gt;"Statistical thinking in Python"&lt;/em&gt; classes of &lt;em&gt;DataCamp&lt;/em&gt;, and a presentation at PyCon by Jake Vanderplas. It was really a mind opener for me. I had very few statistics background from my university degree, so the results I find in online when searching about some statistical are not that intuitive and takes me a while to understand.&lt;/p&gt;
 &lt;p&gt;This post is just to solidify my understanding of the concept and to share what I learned, hoping that this helps some people having trouble with understanding intuition for some statistical concepts as well.&lt;/p&gt;
 
 &lt;/div&gt;
@@ -116,22 +116,22 @@ Die side 6 occurences: 1
 &lt;/div&gt;
 &lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;p&gt;Great, we are successful with simulating 20 dice rolls. To know the probability of rolling the side "1" six times, I can repeat this exercise again for say 10,000 times, and count the times that die side "1" is greater than or equal 5.&lt;/p&gt;
+&lt;p&gt;Great, we are successful with simulating 20 dice rolls. To know the probability of rolling the side "1" six times, I can repeat this exercise again for say 10,000 times, and check the the instances when die side "1" shows up 6 times or more.&lt;/p&gt;
 
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing code_cell rendered"&gt;
 &lt;div class="input"&gt;
-&lt;div class="prompt input_prompt"&gt;In&amp;nbsp;[6]:&lt;/div&gt;
+&lt;div class="prompt input_prompt"&gt;In&amp;nbsp;[3]:&lt;/div&gt;
 &lt;div class="inner_cell"&gt;
     &lt;div class="input_area"&gt;
-&lt;div class=" highlight hl-ipython3"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;is_greater_than_5&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;
+&lt;div class=" highlight hl-ipython3"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;is_greater_than_6&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;
 &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;i&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="nb"&gt;range&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;10000&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
     &lt;span class="n"&gt;counts&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;roll_dice&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;20&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-    &lt;span class="n"&gt;is_greater_than_5&lt;/span&gt; &lt;span class="o"&gt;+=&lt;/span&gt; &lt;span class="n"&gt;counts&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;=&lt;/span&gt;&lt;span class="mi"&gt;6&lt;/span&gt;
+    &lt;span class="n"&gt;is_greater_than_6&lt;/span&gt; &lt;span class="o"&gt;+=&lt;/span&gt; &lt;span class="n"&gt;counts&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;=&lt;/span&gt;&lt;span class="mi"&gt;6&lt;/span&gt;
 
-&lt;span class="n"&gt;probability&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;is_greater_than_5&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="mi"&gt;10000&lt;/span&gt;
+&lt;span class="n"&gt;probability&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;is_greater_than_6&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="mi"&gt;10000&lt;/span&gt;
 &lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;The probability of showing &lt;/span&gt;&lt;span class="se"&gt;\&amp;quot;&lt;/span&gt;&lt;span class="s2"&gt;1&lt;/span&gt;&lt;span class="se"&gt;\&amp;quot;&lt;/span&gt;&lt;span class="s2"&gt; on the dice is &lt;/span&gt;&lt;span class="si"&gt;{:.2%}&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;format&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;probability&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
@@ -149,7 +149,7 @@ Die side 6 occurences: 1
 
 
 &lt;div class="output_subarea output_stream output_stdout output_text"&gt;
-&lt;pre&gt;The probability of showing &amp;#34;1&amp;#34; on the dice is 10.22%
+&lt;pre&gt;The probability of showing &amp;#34;1&amp;#34; on the dice is 9.95%
 &lt;/pre&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -162,8 +162,8 @@ Die side 6 occurences: 1
 &lt;/div&gt;
 &lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;p&gt;Ok, so we &lt;em&gt;accept&lt;/em&gt; the &lt;em&gt;null hypothesis&lt;/em&gt;, i.e. we don't have enough evidence to say that this is an unfair die.&lt;/p&gt;
-&lt;p&gt;It turns out that this whole dice problem is actually a story that can be told using the binomial distribution, which says that "(The number of successes (&lt;strong&gt;&lt;em&gt;r&lt;/em&gt;&lt;/strong&gt;) in &lt;strong&gt;&lt;em&gt;n&lt;/em&gt;&lt;/strong&gt; Bernoulli trials with probability (&lt;strong&gt;&lt;em&gt;p&lt;/em&gt;&lt;/strong&gt;) of success, is &lt;em&gt;binomially distributed&lt;/em&gt;". Which just says that we can show the probability distribution of dice rolling a particular side, e.g. "1", with a 1/6 chance or probability, &lt;strong&gt;&lt;em&gt;p&lt;/em&gt;&lt;/strong&gt;.&lt;/p&gt;
+&lt;p&gt;Ok, so we &lt;em&gt;accept&lt;/em&gt; the &lt;em&gt;null hypothesis&lt;/em&gt;, i.e. we don't have enough evidence to say that this is an unfair dice.&lt;/p&gt;
+&lt;p&gt;It turns out that this whole dice problem is actually a story that can be told using the binomial distribution, which says that "The number of successes (&lt;strong&gt;&lt;em&gt;r&lt;/em&gt;&lt;/strong&gt;) in &lt;strong&gt;&lt;em&gt;n&lt;/em&gt;&lt;/strong&gt; Bernoulli trials with probability (&lt;strong&gt;&lt;em&gt;p&lt;/em&gt;&lt;/strong&gt;) of success, is &lt;em&gt;binomially distributed&lt;/em&gt;". Which just says that we can show the probability distribution of dice rolling a particular side, e.g. "1", with a 1/6 chance or probability, &lt;strong&gt;&lt;em&gt;p&lt;/em&gt;&lt;/strong&gt;.&lt;/p&gt;
 &lt;p&gt;This might still be vague, so lets draw a plot to make it clear.&lt;/p&gt;
 
 &lt;/div&gt;
@@ -171,7 +171,7 @@ Die side 6 occurences: 1
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing code_cell rendered"&gt;
 &lt;div class="input"&gt;
-&lt;div class="prompt input_prompt"&gt;In&amp;nbsp;[7]:&lt;/div&gt;
+&lt;div class="prompt input_prompt"&gt;In&amp;nbsp;[4]:&lt;/div&gt;
 &lt;div class="inner_cell"&gt;
     &lt;div class="input_area"&gt;
 &lt;div class=" highlight hl-ipython3"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;matplotlib.pyplot&lt;/span&gt; &lt;span class="k"&gt;as&lt;/span&gt; &lt;span class="nn"&gt;plt&lt;/span&gt;
@@ -194,13 +194,13 @@ Die side 6 occurences: 1
 
 &lt;div class="output_area"&gt;
 
-&lt;div class="prompt output_prompt"&gt;Out[7]:&lt;/div&gt;
+&lt;div class="prompt output_prompt"&gt;Out[4]:&lt;/div&gt;
 
 
 
 
 &lt;div class="output_text output_subarea output_execute_result"&gt;
-&lt;pre&gt;array([3, 3, 4, 1, 2])&lt;/pre&gt;
+&lt;pre&gt;array([6, 5, 1, 3, 1])&lt;/pre&gt;
 &lt;/div&gt;
 
 &lt;/div&gt;
@@ -398,6 +398,15 @@ M7OM+EjfzCwjDn0zs4w49M3MMuLQNzPLiEPfzCwjDn0zs4z8f32ASP14W0D7AAAAAElFTkSuQmCC
 &lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;Indeed, we see here that the area to the right of 6 inclusive, is roughly 10% of the area of the whole distribution.&lt;/p&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;We saw that we can do simulation to get a good estimate of the binomial distribution. Though the numpy method give us faster results, the intiuition behind this statistical concept can be explained in doing a simple code. These can then give us the 'aha' moment when we look back to the formal and classical definition of a binomial distribution, and the likes of it.&lt;/p&gt;
 
 &lt;/div&gt;
 &lt;/div&gt;

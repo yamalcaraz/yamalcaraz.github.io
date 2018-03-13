@@ -279,7 +279,7 @@ Yam's attempt at blogging            </a>
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>While studying machine learning, I encountered the term "hacker statistics" in different sources, such as from <em>"Statistical thinking in Python"</em> classes of <em>DataCamp</em>, and a presentation at PyCon by Jake Vanderplas. It was really a mind opener for me. I had very few statistics background from my university degree, so the results I find in online when searching about (ANOVA), etc. are not that intuitive.</p>
+<p>While studying machine learning, I encountered the term "hacker statistics" in different sources, such as from <em>"Statistical thinking in Python"</em> classes of <em>DataCamp</em>, and a presentation at PyCon by Jake Vanderplas. It was really a mind opener for me. I had very few statistics background from my university degree, so the results I find in online when searching about some statistical are not that intuitive and takes me a while to understand.</p>
 <p>This post is just to solidify my understanding of the concept and to share what I learned, hoping that this helps some people having trouble with understanding intuition for some statistical concepts as well.</p>
 
 </div>
@@ -391,22 +391,22 @@ Die side 6 occurences: 1
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Great, we are successful with simulating 20 dice rolls. To know the probability of rolling the side "1" six times, I can repeat this exercise again for say 10,000 times, and count the times that die side "1" is greater than or equal 5.</p>
+<p>Great, we are successful with simulating 20 dice rolls. To know the probability of rolling the side "1" six times, I can repeat this exercise again for say 10,000 times, and check the the instances when die side "1" shows up 6 times or more.</p>
 
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[6]:</div>
+<div class="prompt input_prompt">In&nbsp;[3]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">is_greater_than_5</span> <span class="o">=</span> <span class="mi">0</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">is_greater_than_6</span> <span class="o">=</span> <span class="mi">0</span>
 <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10000</span><span class="p">):</span>
     <span class="n">counts</span><span class="o">=</span><span class="n">roll_dice</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span>
-    <span class="n">is_greater_than_5</span> <span class="o">+=</span> <span class="n">counts</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">&gt;=</span><span class="mi">6</span>
+    <span class="n">is_greater_than_6</span> <span class="o">+=</span> <span class="n">counts</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">&gt;=</span><span class="mi">6</span>
 
-<span class="n">probability</span> <span class="o">=</span> <span class="n">is_greater_than_5</span><span class="o">/</span><span class="mi">10000</span>
+<span class="n">probability</span> <span class="o">=</span> <span class="n">is_greater_than_6</span><span class="o">/</span><span class="mi">10000</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;The probability of showing </span><span class="se">\&quot;</span><span class="s2">1</span><span class="se">\&quot;</span><span class="s2"> on the dice is </span><span class="si">{:.2%}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">probability</span><span class="p">))</span>
 </pre></div>
 
@@ -424,7 +424,7 @@ Die side 6 occurences: 1
 
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>The probability of showing &#34;1&#34; on the dice is 10.22%
+<pre>The probability of showing &#34;1&#34; on the dice is 9.95%
 </pre>
 </div>
 </div>
@@ -437,8 +437,8 @@ Die side 6 occurences: 1
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Ok, so we <em>accept</em> the <em>null hypothesis</em>, i.e. we don't have enough evidence to say that this is an unfair die.</p>
-<p>It turns out that this whole dice problem is actually a story that can be told using the binomial distribution, which says that "(The number of successes (<strong><em>r</em></strong>) in <strong><em>n</em></strong> Bernoulli trials with probability (<strong><em>p</em></strong>) of success, is <em>binomially distributed</em>". Which just says that we can show the probability distribution of dice rolling a particular side, e.g. "1", with a 1/6 chance or probability, <strong><em>p</em></strong>.</p>
+<p>Ok, so we <em>accept</em> the <em>null hypothesis</em>, i.e. we don't have enough evidence to say that this is an unfair dice.</p>
+<p>It turns out that this whole dice problem is actually a story that can be told using the binomial distribution, which says that "The number of successes (<strong><em>r</em></strong>) in <strong><em>n</em></strong> Bernoulli trials with probability (<strong><em>p</em></strong>) of success, is <em>binomially distributed</em>". Which just says that we can show the probability distribution of dice rolling a particular side, e.g. "1", with a 1/6 chance or probability, <strong><em>p</em></strong>.</p>
 <p>This might still be vague, so lets draw a plot to make it clear.</p>
 
 </div>
@@ -446,7 +446,7 @@ Die side 6 occurences: 1
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[7]:</div>
+<div class="prompt input_prompt">In&nbsp;[4]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
@@ -469,13 +469,13 @@ Die side 6 occurences: 1
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[7]:</div>
+<div class="prompt output_prompt">Out[4]:</div>
 
 
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>array([3, 3, 4, 1, 2])</pre>
+<pre>array([6, 5, 1, 3, 1])</pre>
 </div>
 
 </div>
@@ -681,6 +681,15 @@ M7OM+EjfzCwjDn0zs4w49M3MMuLQNzPLiEPfzCwjDn0zs4z8f32ASP14W0D7AAAAAElFTkSuQmCC
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
+<p>We saw that we can do simulation to get a good estimate of the binomial distribution. Though the numpy method give us faster results, the intiuition behind this statistical concept can be explained in doing a simple code. These can then give us the 'aha' moment when we look back to the formal and classical definition of a binomial distribution, and the likes of it.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
 <p>Sources:</p>
 <p><a href="http://christopherroach.com/articles/statistics-for-hackers/">Christopher Roach's Blog</a></p>
 <p><a href="https://www.youtube.com/watch?v=Iq9DzN6mvYA&amp;feature=youtu.be]">Jake Vanderplas' talk</a></p>
@@ -752,10 +761,10 @@ M7OM+EjfzCwjDn0zs4w49M3MMuLQNzPLiEPfzCwjDn0zs4z8f32ASP14W0D7AAAAAElFTkSuQmCC
       <a href="https://yamalcaraz.github.io/tag/python.html">python</a>
     </li>
     <li class="list-group-item tag-4">
-      <a href="https://yamalcaraz.github.io/tag/statistics.html">statistics</a>
+      <a href="https://yamalcaraz.github.io/tag/machine-learning.html">machine learning</a>
     </li>
     <li class="list-group-item tag-4">
-      <a href="https://yamalcaraz.github.io/tag/machine-learning.html">machine learning</a>
+      <a href="https://yamalcaraz.github.io/tag/statistics.html">statistics</a>
     </li>
   </ul>
 </li>
