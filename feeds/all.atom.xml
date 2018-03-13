@@ -163,7 +163,7 @@ Die side 6 occurences: 1
 &lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;Ok, so we &lt;em&gt;accept&lt;/em&gt; the &lt;em&gt;null hypothesis&lt;/em&gt;, i.e. we don't have enough evidence to say that this is an unfair dice.&lt;/p&gt;
-&lt;p&gt;It turns out that this whole dice problem is actually a story that can be told using the binomial distribution, which says that "The number of successes (&lt;strong&gt;&lt;em&gt;r&lt;/em&gt;&lt;/strong&gt;) in &lt;strong&gt;&lt;em&gt;n&lt;/em&gt;&lt;/strong&gt; Bernoulli trials with probability (&lt;strong&gt;&lt;em&gt;p&lt;/em&gt;&lt;/strong&gt;) of success, is &lt;em&gt;binomially distributed&lt;/em&gt;". Which just says that we can show the probability distribution of dice rolling a particular side, e.g. "1", with a 1/6 chance or probability, &lt;strong&gt;&lt;em&gt;p&lt;/em&gt;&lt;/strong&gt;.&lt;/p&gt;
+&lt;p&gt;It turns out that this whole dice problem is actually a story that can be told using the binomial distribution, which says that "The number of successes ($r$) in $n$ Bernoulli trials with probability ($p$) of success, is &lt;em&gt;binomially distributed&lt;/em&gt;". Which just says that we can show the probability distribution of dice rolling a particular side, e.g. "1", with a $\frac{1}{6}$ chance or probability, $p$.&lt;/p&gt;
 &lt;p&gt;This might still be vague, so lets draw a plot to make it clear.&lt;/p&gt;
 
 &lt;/div&gt;
