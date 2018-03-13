@@ -4,7 +4,7 @@
 &lt;/div&gt;
 &lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;p&gt;While studying machine learning, I encountered the term "hacker statistics" in different sources, such as from &lt;em&gt;"Statistical thinking in Python"&lt;/em&gt; classes of &lt;em&gt;DataCamp&lt;/em&gt;, and a presentation at PyCon by Jake Vanderplas. It was really a mind opener for me. I had very few statistics background from my university degree, so the results I find in online when searching about some statistical are not that intuitive and takes me a while to understand.&lt;/p&gt;
+&lt;p&gt;While studying machine learning, I encountered the term "hacker statistics" in different sources, such as from &lt;em&gt;"Statistical thinking in Python"&lt;/em&gt; classes of &lt;em&gt;DataCamp&lt;/em&gt;, and a presentation at PyCon by Jake Vanderplas. It was really a mind opener for me. I had very few statistics background from my university degree, so the results I find in online when searching about some statistical terms are not that intuitive and takes me a while to understand.&lt;/p&gt;
 &lt;p&gt;This post is just to solidify my understanding of the concept and to share what I learned, hoping that this helps some people having trouble with understanding intuition for some statistical concepts as well.&lt;/p&gt;
 
 &lt;/div&gt;
